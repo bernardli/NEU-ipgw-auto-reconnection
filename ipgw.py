@@ -14,7 +14,7 @@ def main():
 
     # 这里暂时先用阻塞式的方式
     while True:
-        time.sleep(3 + random.random() * 3)
+        time.sleep(60 + random.random() * 10)
         if not net.check():
             print('net error!')
 
