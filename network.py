@@ -28,6 +28,8 @@ class Network:
             print('URLRequired')
         except RequestException as e:
             print('RequestException')
+        except requests.exceptions.RequestException as e:
+            print('anyway, it is a request error')
         except BaseException as e:
             print('wtf?')
         return False
@@ -49,7 +51,26 @@ class Network:
             'execution': 'e1s1',
             '_eventId': 'submit'
         }
-        sess.post(self.uniformUrl, headers=self.header, data=dataBody)
+        try:
+            sess.post(self.uniformUrl, headers=self.header, data=dataBody)
+        # except Timeout as e:
+        #     print('post timeout.')
+        # except ConnectionError as e:
+        #     print('post connect error.')
+        # except HTTPError as e:
+        #     print('post HTTPError')
+        # except TooManyRedirects as e:
+        #     print('post TooManyRedirects')
+        # except URLRequired as e:
+        #     print('post URLRequired')
+        # except RequestException as e:
+        #     print('post RequestException')
+        except requests.exceptions.RequestException as e:
+            print(e)
+            print('anyway, it is a request error')
+        except BaseException as e:
+            print('wtf?')
+        
 
     def NonUnifiedLogin(self):
         sess = requests.session()
@@ -66,4 +87,10 @@ class Network:
             'url': '',
             'save_me': '0'
         }
-        sess.post(self.nonUniformUrl, headers=self.header, data=dataBody)
+        try:
+            sess.post(self.nonUniformUrl, headers=self.header, data=dataBody)
+        except requests.exceptions.RequestException as e:
+            print(e)
+            print('anyway, it is a request error')
+        except BaseException as e:
+            print('wtf?')
