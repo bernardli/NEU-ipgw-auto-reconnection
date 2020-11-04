@@ -67,7 +67,7 @@ class Network:
         #     print('post RequestException')
         except requests.exceptions.RequestException as e:
             print(e)
-            print('anyway, it is a request error')
+            print('post error :(')
         except BaseException as e:
             print('wtf?')
         
@@ -91,6 +91,6 @@ class Network:
             sess.post(self.nonUniformUrl, headers=self.header, data=dataBody)
         except requests.exceptions.RequestException as e:
             print(e)
-            print('anyway, it is a request error')
+            print('post error :(')
         except BaseException as e:
             print('wtf?')
